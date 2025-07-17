@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    img { width: 100%; border-radius: 8px; }
+    h1 { margin-top: 10px; }
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body>
+  <div id="recipe-details"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!id) {
+      document.getElementById('recipe-details').innerHTML = "<p>Recipe ID missing.</p>";
+    } else {
+      fetch(`http://127.0.0.1:5000/recipe-details/${id}`)
+        .then(res => res.json())
+        .then(data => {
+          const div = document.getElementById('recipe-details');
+          div.innerHTML = `
+            <h1>${data.title}</h1>
+            <img src="${data.image}" alt="${data.title}">
+            <h2>Nutrition</h2>
+            <ul>
+              ${Object.entries(data.nutrition).map(([k, v]) => `<li>${k}: ${v}</li>`).join('')}
+            </ul>
+            ${data.missingIngredients.length ? `<h3>Missing Ingredients</h3><ul>${data.missingIngredients.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
+            <h2>Steps</h2>
+            <ol>
+              ${data.steps.map(step => `<li>${step}</li>`).join('')}
+            </ol>
+            <p><a href="${data.sourceUrl}" target="_blank">Original Recipe Source</a></p>
+          `;
+        })
+        .catch(err => {
+          document.getElementById('recipe-details').innerHTML = "<p>Failed to load recipe details.</p>";
+          console.error(err);
+        });
+    }
+  </script>
+</body>
+</html>

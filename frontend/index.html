@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FitFeast</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="page">
+    <div class="container">
+      <h1>FitFeast</h1>
+      <form id="recipeForm">
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" id="ingredients" placeholder="e.g. egg, tomato, oats" />
+
+        <label for="goal">Fitness Goal:</label>
+        <select id="goal">
+          <option value="" disabled selected>Select</option>
+          <option value="weight_loss">Weight Loss</option>
+          <option value="muscle_gain">Muscle Gain</option>
+          <option value="weight_gain">Weight Gain</option>
+        </select>
+
+        <button type="submit" id="getRecipesBtn">Get Recipes</button>
+      </form>
+    </div>
+
+    <div id="result" class="recipe-results"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
