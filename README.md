@@ -10,7 +10,7 @@ The goal is to create a user-friendly web app that fetches tailored recipe sugge
 
 ## 🚀 Features (Planned MVP)
 - 🔍 Input ingredients (e.g., "egg, tomato, oats")
-- 🎯 Select a fitness goal (Weight Loss / Muscle Gain / Keto)
+- 🎯 Select a fitness goal (Weight Loss / Muscle Gain / Weight Gain)
 - 🍲 Fetch recipe suggestions from Spoonacular
 - 📊 Filter recipes based on nutritional profile
 - 🖥️ Display recipe name, image, and basic macros
